@@ -26,7 +26,8 @@ const creditTranscation = async(req,res) => {
         const {description,credit} = req.body;
         const result = await transModel.find();
         let totalBalance = result[result.length-1].runningBalance;
-        totalBalance = totalBalance + credit;
+        totalBalance = ((+totalBalance) + (+credit));
+      //  console.log((totalBalance));
         const newBalance = new transModel({runningBalance:totalBalance,description,credit});
         await newBalance.save();
         const result1 = await transModel.find();
