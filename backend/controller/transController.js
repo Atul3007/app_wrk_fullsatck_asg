@@ -2,7 +2,7 @@ const transModel = require('../models/transcationModel')
 
 const allTranscation = async(req,res) => {
     try {
-        const result = await transModel.find().sot({date : -1});
+        const result = await transModel.find().sort({date : -1});
         res.status(200).json({msg:"Transcation details",result})
     } catch (error) {
         res.status(500).json({error:"Error in getting transcation details"})
